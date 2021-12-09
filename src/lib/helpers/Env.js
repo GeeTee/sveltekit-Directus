@@ -1,0 +1,1 @@
+export const GRAPQH_URL = import.meta.env.VITE_GRAPQH_URL
