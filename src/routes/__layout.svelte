@@ -4,20 +4,21 @@
     import { Directus } from '@directus/sdk';
 
     const directus = new Directus('http://localhost:8055/');
-
     const start = async () => {
         // Try to authenticate with token if exists
         await directus.auth
             .refresh()
             .then(() => {
                 $authenticated = true;
+
             })
-            .catch((err) => {console.log('TTTTTTTTTTTTTTTTTTTTT',err)});
+            .catch((err) => {console.log('T',err)});
 
     }
     start()
-
+    setContext('test', 'FROM __LAYOUT')
     setContext('directus', directus)
+
 </script>
 
 <nav>

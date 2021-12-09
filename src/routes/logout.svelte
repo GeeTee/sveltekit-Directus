@@ -1,5 +1,6 @@
 <script>
     import { authenticated } from "$lib/stores/authStore";
+    import u from '$lib/stores/userStore'
     import { getContext } from "svelte";
     import { goto } from "$app/navigation";
     const directus = getContext('directus')
@@ -7,10 +8,14 @@
     const handleLogout = async () => {
         await directus.auth.logout()
         .then(
-            () => $authenticated = false
+            () => {
+                $authenticated = false
+                u.deleteUser()
+                console.log('3', $u)
+                goto('/')
+            }
         )
-        console.log('LOGOUT : ', directus.auth)
-        goto('/')
+        
     }
 </script>
 <h1>Logout page</h1>
