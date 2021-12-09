@@ -1,1 +1,1 @@
-export const GRAPQH_URL = import.meta.env.VITE_GRAPQH_URL
+export const DIRECTUS_URL = import.meta.env.VITE_DIRECTUS_URL

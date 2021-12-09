@@ -1,8 +1,8 @@
 import f from '$lib/helpers/scripts'
-import { GRAPQH_URL } from './Env'
+import { DIRECTUS_URL } from './Env'
 
 const getAllArticlesTitle = async () => {
-    const res = await fetch(f.getMyEnvVar(GRAPQH_URL), {
+    const res = await fetch(`${f.getMyEnvVar(DIRECTUS_URL)}/graphql`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
