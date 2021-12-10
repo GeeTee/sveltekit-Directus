@@ -18,9 +18,9 @@
             })
             .then(
                 (user) => {
-                    console.log('1', user)
+                    // console.log('1', user)
                     u.setUser(user)
-                    console.log('2',$u)
+                    // console.log('2',$u)
                 }
             )
             .catch((err) => console.log(err.message))

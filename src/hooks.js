@@ -10,7 +10,7 @@ export const handle = async ({request, resolve}) => {
     request.locals.directus = {directusAuth: false}
     if (cookies.directus_refresh_token) {
         // console.log('Hooks directus ok')
-        directusAuth: true
+        request.locals.directus.directusAuth = true
     }
 
     // if (!cookies.directus_refresh_token) {

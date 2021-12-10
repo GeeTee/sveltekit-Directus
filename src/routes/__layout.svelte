@@ -24,9 +24,9 @@
         })
         .then(
             (user) => {
-                console.log('1', user)
+                // console.log('main __lay 1', user)
                 u.setUser(user)
-                console.log('2',$u)
+                // console.log('main __lay 2',$u)
             }
         )
         .catch((err) => console.log(err.message))
@@ -43,10 +43,13 @@
          <a href="/login" sveltekit:prefetch>login</a>
     {/if}
     {#if $authenticated}
+         <a href="/dashboard" sveltekit:prefetch>dashboard</a>
          <a href="/logout" sveltekit:prefetch>logout</a>
     {/if}
 </nav>
-<span><strong>"$authenticated" : {$authenticated}</strong> / <strong>{$u.first_name}</strong></span><br>
+{#if $authenticated}
+     {$u.first_name} {$u.last_name}
+{/if}
 <slot />
 
 <style>
