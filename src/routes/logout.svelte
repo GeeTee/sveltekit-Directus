@@ -11,7 +11,7 @@
             () => {
                 $authenticated = false
                 u.deleteUser()
-                console.log('3', $u)
+                console.log('3 logout', $u)
                 goto('/')
             }
         )

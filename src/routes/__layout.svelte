@@ -1,5 +1,6 @@
 <script>
     import { authenticated } from '$lib/stores/authStore';
+    import u from '$lib/stores/userStore'
     import { setContext } from 'svelte';
     import { Directus } from '@directus/sdk';
 
@@ -10,12 +11,26 @@
             .refresh()
             .then(() => {
                 $authenticated = true;
-
+                getCurrentUser()
             })
             .catch((err) => {console.log('T',err)});
 
     }
     start()
+
+    const getCurrentUser = async () => {
+        await directus.users.me.read({
+            fields: ['id','first_name', 'last_name', 'email', 'avatar']
+        })
+        .then(
+            (user) => {
+                console.log('1', user)
+                u.setUser(user)
+                console.log('2',$u)
+            }
+        )
+        .catch((err) => console.log(err.message))
+    }
     setContext('test', 'FROM __LAYOUT')
     setContext('directus', directus)
 
@@ -31,7 +46,7 @@
          <a href="/logout" sveltekit:prefetch>logout</a>
     {/if}
 </nav>
-<span><strong>"$authenticated" : {$authenticated}</strong></span><br>
+<span><strong>"$authenticated" : {$authenticated}</strong> / <strong>{$u.first_name}</strong></span><br>
 <slot />
 
 <style>

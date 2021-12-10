@@ -1,6 +1,6 @@
 <script>
     import { authenticated } from "$lib/stores/authStore";
-    import userStore from '$lib/stores/userStore'
+    import u from '$lib/stores/userStore'
     import { getContext } from "svelte";
     import { goto } from "$app/navigation";
 
@@ -19,8 +19,8 @@
             .then(
                 (user) => {
                     console.log('1', user)
-                    userStore.setUser(user)
-                    console.log('2',$userStore)
+                    u.setUser(user)
+                    console.log('2',$u)
                 }
             )
             .catch((err) => console.log(err.message))
@@ -30,7 +30,7 @@
         await directus.auth
 			.login({ email, password })
 			.then(
-                () => {
+                async () => {
                     $authenticated = true
                     getCurrentUser()
                     goto('/profile')
