@@ -1,4 +1,4 @@
-<div class="test">
+<div class="test block">
     <h1>Kit Directus</h1>
     <h2 class="subtitle">Test Bulma</h2>
 <ul>
