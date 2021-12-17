@@ -8,6 +8,7 @@
 </ul>
 </div>
 <div class="notification is-info">Bulma</div>
+<div class="test">Div .test pour test !!!</div>
 
 <style lang="scss">
     .test {

@@ -1,13 +1,14 @@
 import adapter from "@sveltejs/adapter-auto";
 import sveltePreprocess from "svelte-preprocess";
+import path from 'path'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: [
     sveltePreprocess({
-      scss: {
-        prependData: '@import "src/variables.scss";',
-      },
+    //  css: {
+    //     prependData: '@import "../static/css/app.css";',
+    //   },
     }),
   ],
   kit: {
@@ -17,13 +18,18 @@ const config = {
     target: "#svelte",
 
     vite: {
-      css: {
-        preprocessorOptions: {
-          scss: {
-            additionalData: '@import "src/variables.scss";',
-          },
-        },
-      },
+      resolve: {
+        alias: {
+          '$helpers': path.resolve('src/lib/helpers'),
+        }
+      }
+      // css: {
+      //   preprocessorOptions: {
+      //     css: {
+      //       additionalData: '@import "../static/css/app.css";',
+      //     },
+      //   },
+      // },
     },
   },
 };
