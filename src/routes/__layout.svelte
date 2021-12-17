@@ -1,9 +1,10 @@
 <script>
-  import "../app.scss";
+  // import "../app.scss";
   import { authenticated } from "$lib/stores/authStore";
   import u from "$lib/stores/userStore";
   import { setContext } from "svelte";
   import { Directus } from "@directus/sdk";
+import { link } from "joi";
 
   const directus = new Directus("http://localhost:8055/");
   const start = async () => {
@@ -36,6 +37,7 @@
   setContext("directus", directus);
 </script>
 
+
 <nav>
   <a href="/" sveltekit:prefetch="">home</a>
   <a href="/articles" sveltekit:prefetch="">articles</a>
@@ -50,7 +52,7 @@
 {#if $authenticated}
   {$u.first_name} {$u.last_name}
 {/if}
-<slot>
+<slot />
   <style>
     nav {
       display: flex;
@@ -65,5 +67,4 @@
     nav > a:hover {
       color: sandybrown;
     }
-  </style></slot
->
+  </style>
